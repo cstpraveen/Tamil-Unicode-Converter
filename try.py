@@ -5,6 +5,7 @@ pygtk.require('2.0')
 import gtk
 
 TextBox = gtk.TextView()
+TextBox2 = gtk.TextView()
 
 class Base:
     def destroy(self, widget, data=None):
@@ -27,9 +28,23 @@ class Base:
         TextBox.set_border_window_size(gtk.TEXT_WINDOW_TOP,2)
         TextBox.set_border_window_size(gtk.TEXT_WINDOW_BOTTOM,2)
 
+        TextBox2.set_wrap_mode(gtk.WRAP_WORD)
+        TextBox2.set_editable(True)
+        TextBox2.set_cursor_visible(True)	
+        TextBox2.set_border_window_size(gtk.TEXT_WINDOW_LEFT,2)
+        TextBox2.set_border_window_size(gtk.TEXT_WINDOW_RIGHT,2)
+        TextBox2.set_border_window_size(gtk.TEXT_WINDOW_TOP,2)
+        TextBox2.set_border_window_size(gtk.TEXT_WINDOW_BOTTOM,2)
+
         self.box1=gtk.HBox()
         self.box1.pack_start(TextBox)
-        self.window.add(self.box1)
+
+        self.box2=gtk.VBox()
+        self.box2.pack_start(self.box1)
+        self.box2.pack_start(TextBox2)
+
+
+        self.window.add(self.box2)
         self.window.show_all()
 
     def main(self):
