@@ -41,19 +41,22 @@ class Base:
         TextBox2.set_border_window_size(gtk.TEXT_WINDOW_BOTTOM,2)
 
         rbutton1 = gtk.RadioButton(None, "TSCII")
-        rbutton2 = gtk.RadioButton(None, "TAB")
-        rbutton3 = gtk.RadioButton(None, "TAM")
-        rbutton4 = gtk.RadioButton(None, "Bamini")
+        rbutton2 = gtk.RadioButton(rbutton1, "TAB")
+        rbutton3 = gtk.RadioButton(rbutton2, "TAM")
+        rbutton4 = gtk.RadioButton(rbutton3, "Bamini")
+
 
         self.box1=gtk.HBox()
+        self.separator = gtk.HSeparator()
         self.box1.pack_start(TextBox)
+        self.box1.pack_start(self.separator, False, True, 0)
+        self.separator.show()
        
         self.box2=gtk.VBox()
         self.box2.pack_start(rbutton1)
         self.box2.pack_start(rbutton2)
         self.box2.pack_start(rbutton3)
         self.box2.pack_start(rbutton4)
-
         self.box2.pack_start(self.box1)
         self.box2.pack_start(TextBox2)
 
